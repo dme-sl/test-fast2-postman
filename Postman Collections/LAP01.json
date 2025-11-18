@@ -1,0 +1,1691 @@
+{
+	"info": {
+		"_postman_id": "711759c0-3dbb-416a-86cc-ce4fc7c85956",
+		"name": "LAP01_ConformiteHabilitation",
+		"description": "Lien vers la documentation : [https://wiki.swisslife.fr/display/FAST/LAP01+conformite](https://wiki.swisslife.fr/display/FAST/LAP01+conformite)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "061c78fd-e5d2-44b4-a372-270c00c91681",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status should be UP\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  pm.expect(responseData.status).to.eq('UP');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "95de61d8-194e-4f9f-b24a-65807e4a266d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url_transverse}}/ConformiteContrat/health"
+			},
+			"response": []
+		},
+		{
+			"name": "Autorisation - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cb277b6-8038-4e89-b351-18c275acacde",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estConforme'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estConforme');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estConforme should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estConforme).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estConforme should be true\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estConforme).to.eq(true);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "2afbf7e7-20fb-41ba-8a51-0a6eaabe6e90",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/conformiteContrat/autorisation?idContrat=0010337235001&codePartenaire=0028443",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"conformiteContrat",
+						"autorisation"
+					],
+					"query": [
+						{
+							"key": "idContrat",
+							"value": "0010337235001"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0028443"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autorisation - Non conforme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "add2b42d-468a-4a4b-a55c-4935379ed198",
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estConforme'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estConforme');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estConforme should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estConforme).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estConforme should be false\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estConforme).to.eq(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisonsNonConformite'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisonsNonConformite');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisonsNonConformite should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisonsNonConformite).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisonsNonConformite.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisonsNonConformite[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisonsNonConformite.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisonsNonConformite[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisonsNonConformite.code' sould be 'LAP01-01'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisonsNonConformite[0].code).to.eq('LAP01-01');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisonsNonConformite.libelle' sould be 'Le code apporteur n'est pas éligible pour réaliser des opérations sur ce contrat.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisonsNonConformite[0].libelle).to.eq(\"Le code apporteur n'est pas éligible pour réaliser des opérations sur ce contrat.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "9c12da8d-cee3-4c40-b80c-b4a48d9477dc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/conformiteContrat/autorisation?idContrat=0009909616003&codePartenaire=PTF6308",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"conformiteContrat",
+						"autorisation"
+					],
+					"query": [
+						{
+							"key": "idContrat",
+							"value": "0009909616003"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "PTF6308"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autorisation - IdContrat manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff51e01e-7dc5-4c9b-a001-1c2e77937847",
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.code' sould be 'LAP01-05'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].code).to.eq('LAP01-05');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.libelle' sould be 'Le champ 'idContrat' est obligatoire.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].libelle).to.eq(\"Le champ 'idContrat' est obligatoire.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "cbc71c91-437e-4530-b45b-992b691b3251",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/conformiteContrat/autorisation?codePartenaire=0054961",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"conformiteContrat",
+						"autorisation"
+					],
+					"query": [
+						{
+							"key": "codePartenaire",
+							"value": "0054961"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autorisation - CodePartenaire manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2afa292-17d3-4ca0-8e03-56cb1f8a77c4",
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.code' sould be 'LAP01-05'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].code).to.eq('LAP01-05');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.libelle' sould be 'Le champ 'codePartenaire' est obligatoire.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].libelle).to.eq(\"Le champ 'codePartenaire' est obligatoire.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "a29fff93-29fd-4e75-9e9b-f3153c7e9a4f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/conformiteContrat/autorisation?idContrat=0009940015001",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"conformiteContrat",
+						"autorisation"
+					],
+					"query": [
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0054961",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autorisation - Aucun paramètre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c30ac7bf-f03c-49f3-8593-11b42dfbbbb2",
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "a2f125ab-a4eb-4c93-b009-8fffab3e3dc2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url_transverse}}/ConformiteContrat/conformiteContrat/autorisation"
+			},
+			"response": []
+		},
+		{
+			"name": "Consentement - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51191f8f-7ce4-4aff-a1db-e29aea4f9d0a",
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estEligible'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estEligible');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"estEligible should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estEligible).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estEligible should be true\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estEligible).to.eq(true);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "c09802cd-b17e-4e65-8344-fa3a8a168650",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/KN938NE/plateformesTechnologiques/WTH/consentement?typePortail=APIV",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"KN938NE",
+						"plateformesTechnologiques",
+						"WTH",
+						"consentement"
+					],
+					"query": [
+						{
+							"key": "typePortail",
+							"value": "APIV"
+						},
+						{
+							"key": "codeApporteur",
+							"value": "0044096",
+							"description": "RSUS16R AWF725A 8957FMQ WR684BP",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consentement - Non éligible",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5cf7e32-96d4-408e-9d86-7bf7f4117264",
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estEligible'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estEligible');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"estEligible should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estEligible).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estEligible should be false\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estEligible).to.eq(false);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "07787475-0939-40be-9594-6c2e08719d2a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/VX398EU/plateformesTechnologiques/PRO/consentement?typePortail=APIV",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"VX398EU",
+						"plateformesTechnologiques",
+						"PRO",
+						"consentement"
+					],
+					"query": [
+						{
+							"key": "typePortail",
+							"value": "APIV"
+						},
+						{
+							"key": "codeApporteur",
+							"value": "0043213",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consentement - CodeApporteur et compteId manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "399424aa-9713-48be-9aab-d13fadd08dcb",
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "f29d28d6-1c4b-40d2-bd4f-134d3dcc37d4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/plateformesTechnologiques/PRI/consentement?typePortail=APIV",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"plateformesTechnologiques",
+						"PRI",
+						"consentement"
+					],
+					"query": [
+						{
+							"key": "typePortail",
+							"value": "APIV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consentement - NomPlateformeTechnologique manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b0bdd1e-5786-47a6-a5f5-7e4dc5f9e452",
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "4c1ff6b1-667b-499f-a97d-19f285f32a1e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0044096/plateformesTechnologiques/consentement?typePortail=APIV",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0044096",
+						"plateformesTechnologiques",
+						"consentement"
+					],
+					"query": [
+						{
+							"key": "typePortail",
+							"value": "APIV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consentement - TypePortail manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66ef9180-4da6-4d05-8b61-e01c4829e8b2",
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.code' sould be 'LAP01-06'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].code).to.eq('LAP01-05');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.libelle' sould be 'Le champ 'typePortail' est obligatoire.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].libelle).to.eq(\"Le champ 'typePortail' est obligatoire.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "9bbd1210-1a2a-45c3-8684-7bf56ba38f2f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0044096/plateformesTechnologiques/PRI/consentement",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0044096",
+						"plateformesTechnologiques",
+						"PRI",
+						"consentement"
+					],
+					"query": [
+						{
+							"key": "typePortail",
+							"value": "APIV",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produit - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "910a9dc5-ec2c-44db-a8ed-f3d832142ea7",
+						"exec": [
+							"pm.test('Response status code is 200', function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response should be array\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.produits).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test('Content-Type header is application/json', function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response has the required field '[0].code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.produits[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field '[0].libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.produits[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "29d0441b-34e3-47d9-ba6a-e2857cca54d2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/PC7L/produits?domaineMetier=VIE",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"PC7L",
+						"produits"
+					],
+					"query": [
+						{
+							"key": "domaineMetier",
+							"value": "VIE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produit - IdApporteur manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "298f8417-ecf9-4c9e-adb8-f592796523c9",
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "03030836-d743-4a0f-b10b-ca318724b98f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/produits?domaineMetier=VIE",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"produits"
+					],
+					"query": [
+						{
+							"key": "domaineMetier",
+							"value": "VIE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c23f1453-023b-46d1-bee8-d80b8629e13b",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estHabilite'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estHabilite');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be true\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.eq(true);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "ae53be91-aa63-4371-956e-8e55c80dcd30",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationSource",
+						"value": "TNR FAST",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0043213/eligibilite-operations?typeOperation=souscription&codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLPERAGRI",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "souscription"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLPERAGRI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - CodeApporteur manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "e529ca97-3275-471b-a66b-3ee9f524962b"
+					}
+				}
+			],
+			"id": "91a36981-b9e9-4ed3-9fd6-a5fb621e3ac7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationSource",
+						"value": "TNR FAST",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/eligibilite-operations?typeOperation=souscription&codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "codeApporteur",
+							"value": "0043213",
+							"disabled": true
+						},
+						{
+							"key": "typeOperation",
+							"value": "souscription"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - TypeOperation manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.code' sould be 'LAP01-05'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].code).to.eq('LAP01-05');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.libelle' sould be 'Le champ \\'typeOperation\\' est obligatoire.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].libelle).to.eq('Le champ \\'typeOperation\\' est obligatoire.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "1e67c67b-3e3d-48c0-878b-faf97c573bcb"
+					}
+				}
+			],
+			"id": "66471c58-66a2-4baa-8c64-7061d850d2f1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "applicationSource",
+						"value": "TNR FAST",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0043213/eligibilite-operations?codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "souscription",
+							"disabled": true
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - TypeOperation inconnu",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 422\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.code' sould be 'LAP01-07'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].code).to.eq('LAP01-07');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"'raisons.libelle' sould be 'Le type d'opÃ©ration demandÃ© n'est pas disponible.'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0].libelle).to.eq('Le type d\\'opération demandé n\\'est pas disponible.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "23a41d7c-546e-4e3b-bfc5-70db4059f4d2"
+					}
+				}
+			],
+			"id": "6c91538c-9c9c-41a6-9b6b-6bbc38eeefea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0043213/eligibilite-operations?codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG2&typeOperation=souscription2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						},
+						{
+							"key": "typeOperation",
+							"value": "souscription2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - IdContrat manquant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37095e2a-fefa-46f0-b793-3ebfde940acc",
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estHabilite'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estHabilite');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be false\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.eq(false);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "320e6e23-b059-4209-9615-1ee0f143ef9c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0043213/eligibilite-operations?typeOperation=operations&codePartenaire=0043213&codeProduit=SLEPG2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "operations"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - Apporteur inexistant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df6644cc-d85b-41ae-a9b3-df65c9f5ab91",
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "9d31e9fa-344b-45f6-8647-3a81c52e4a61",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/1043213/eligibilite-operations?typeOperation=souscription&codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"1043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "souscription"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - Apporteur inactif",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estHabilite'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estHabilite');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be true\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.eq(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "d065564d-604f-4d88-99a1-5e9000c30266"
+					}
+				}
+			],
+			"id": "9ef13bfa-29db-4e43-b6d9-80c030c61556",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0061311/eligibilite-operations?typeOperation=souscription&codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG2",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0061311",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "souscription"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliteOperations - Apporteur non éligible au produit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'estHabilite'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('estHabilite');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be a boolean\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"estHabilite should be true\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.estHabilite).to.eq(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('raisons');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"raisons should be a array\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.raisons).to.be.a('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'raisons.libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.raisons[0]).to.have.property('libelle');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "5d07c816-6ff4-436b-8f4f-4914d2714a45"
+					}
+				}
+			],
+			"id": "3f42f561-18fc-4429-a864-352e8bf4f05a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_transverse}}/ConformiteContrat/apporteurs/0043213/eligibilite-operations?typeOperation=souscription&codePartenaire=0043213&idContrat=0009940015001&codeProduit=SLEPG",
+					"host": [
+						"{{base_url_transverse}}"
+					],
+					"path": [
+						"ConformiteContrat",
+						"apporteurs",
+						"0043213",
+						"eligibilite-operations"
+					],
+					"query": [
+						{
+							"key": "typeOperation",
+							"value": "souscription"
+						},
+						{
+							"key": "codePartenaire",
+							"value": "0043213"
+						},
+						{
+							"key": "idContrat",
+							"value": "0009940015001"
+						},
+						{
+							"key": "codeProduit",
+							"value": "SLEPG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HierarchieCommerciale - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "639fe61e-d6ad-413c-9aa1-0475e624d73e",
+						"exec": [
+							"pm.test('Response status code is 200', function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response should be array\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test('Content-Type header is application/json', function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response has the required field '[0].code'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData[0]).to.have.property('code');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field '[0].libelle'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData[0]).to.have.property('libelle');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "e674eacd-a272-4df3-ad30-7c176dc8b1f1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url_transverse}}/ConformiteContrat/apporteurs/   PC7L/hierarchie-commerciale"
+			},
+			"response": []
+		}
+	]
+}
