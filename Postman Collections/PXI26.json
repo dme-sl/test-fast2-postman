@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "4603175b-37f9-4869-a056-9d6dbdd7f617",
+		"name": "TestSuite_PXI26_SVIConsultation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0101_getStatut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "419afb6d-86dc-4474-a4ef-b40de320de33",
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response contains 'version'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('version');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response matches ['nom']\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData['nom']).to.eql(\"SVIConsultation\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response matches ['codeSAP']\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData['codeSAP']).to.eql(\"PXI26\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "76a24dba-0f12-416c-86f5-4c5bbf25ae36",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{fast_url}}/{{pxi26_fast_component}}/getStatut?version=1&codeacces=1",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{pxi26_fast_component}}",
+						"getStatut"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "1"
+						},
+						{
+							"key": "codeacces",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0201_identifierClientParTelephoneOK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0131859-aa6f-44bb-bb28-1873fcd98409",
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "35c6437c-6f2c-4e0b-b04c-ecb3e0f2bc58",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"contexteExecution\" : {\r\n      \"applicationSource\" : \"{{pxi26_applicationSource}}\"\r\n,\r\n      \"codeUtilisateur\":\"{{pxi26_codeUtilisateur}}\"},\r\n   \"domaineMetier\" : \"\",\r\n   \"telephoneNumero\" : \"{{pxi26_telephoneNumero}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{pxi26_fast_component}}/identifierClientParTelephone"
+			},
+			"response": []
+		},
+		{
+			"name": "0202_identifierClientParTelephone_aucunKO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ae3d04c-d2b8-461a-8bba-f6e286026e83",
+						"exec": [
+							"pm.test(\"Status code is [500]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([500]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response matches ['codeErreur']\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData['codeErreur']).to.eql(\"PXI0000\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "74066c99-f275-40c5-a957-87e7b59b6f8a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"contexteExecution\" : {\r\n      \"applicationSource\" : \"{{pxi26_applicationSource}}\"\r\n,\r\n      \"codeUtilisateur\":\"{{pxi26_codeUtilisateur}}\"},\r\n   \"domaineMetier\" : \"\",\r\n   \"telephoneNumero\" : \"{{pxi26_telephoneNumeroIntrouvable}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{pxi26_fast_component}}/identifierClientParTelephone"
+			},
+			"response": []
+		},
+		{
+			"name": "0202_identifierClientParTelephone_tropretourKO",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "80649067-50d4-4b95-b162-24a1685e33fe",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc4e3c24-f6da-4ae6-8725-f502c121049c",
+						"exec": [
+							"pm.test(\"Status code is [500]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([500]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response matches ['codeErreur']\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData['codeErreur']).to.eql(\"PXI0001\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "84a348b3-beb0-42a1-8fa5-66e71f80413b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"contexteExecution\" : {\r\n      \"applicationSource\" : \"{{pxi26_applicationSource}}\"\r\n,\r\n      \"codeUtilisateur\":\"{{pxi26_codeUtilisateur}}\"},\r\n   \"domaineMetier\" : \"\",\r\n   \"telephoneNumero\" : \"{{pxi26_telephoneNumeroKO}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{pxi26_fast_component}}/identifierClientParTelephone"
+			},
+			"response": []
+		},
+		{
+			"name": "0301_identifierClientParNumeroPersonneOK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "389e9439-fb83-4e66-80c7-b781af39fc52",
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "1b548997-f3a0-4cbc-bf6d-dbd803a79a51",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"contexteExecution\" : {\r\n      \"applicationSource\" : \"{{pxi26_applicationSource}}\"\r\n,\r\n      \"codeUtilisateur\":\"{{pxi26_codeUtilisateur}}\"},\r\n   \"domaineMetier\" : \"\",\r\n   \"personneId\" : \"{{pxi26_personneId}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{pxi26_fast_component}}/identifierClientParNumeroPersonne"
+			},
+			"response": []
+		},
+		{
+			"name": "0302_identifierClientParNumeroPersonneKO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d361cdc0-529a-4a1b-b868-2c251ea8dbec",
+						"exec": [
+							"pm.test(\"Status code is [500]\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([500]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response matches ['codeErreur']\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData['codeErreur']).to.eql(\"PXI0005\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "3047a20a-ad06-48ed-88d9-914b200cd5ae",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"contexteExecution\" : {\r\n      \"applicationSource\" : \"{{pxi26_applicationSource}}\"\r\n,\r\n      \"codeUtilisateur\":\"{{pxi26_codeUtilisateur}}\"},\r\n   \"domaineMetier\" : \"\",\r\n   \"personneId\" : \"{{pxi26_personneIdKO}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{pxi26_fast_component}}/identifierClientParNumeroPersonne"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{vault:fast_password}}",
+			"username": "{{vault:fast_login}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "746f208b-ca5e-4a77-835e-96605fe01b26",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "020dd70b-b1b0-46d2-8f17-2fd0cda25e10",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9272ffd3-801c-439f-9236-9c08ae318164",
+			"key": "pxi26_fast_component",
+			"value": "SVIConsultation-1/rest/SVIConsultation"
+		},
+		{
+			"id": "67e490b5-01b0-4f1d-9c81-6a69c08fdf39",
+			"key": "pxi26_applicationSource",
+			"value": "FAST"
+		},
+		{
+			"id": "dc33e6a6-3a9d-4862-a9dc-6b770296c0f0",
+			"key": "pxi26_codeUtilisateur",
+			"value": "25"
+		},
+		{
+			"id": "272585bf-56b7-49e4-a90f-1c14c0fd6dec",
+			"key": "pxi26_personneId",
+			"value": "92DN5989"
+		},
+		{
+			"id": "bb2a1a48-a4ae-498b-bea9-e9aa618ac7d4",
+			"key": "pxi26_personneIdKO",
+			"value": "KOKOKOKO"
+		},
+		{
+			"id": "d7942ad2-a4fe-43a2-8bdc-3ebdaab1e067",
+			"key": "pxi26_telephoneNumeroKO",
+			"value": "0000000000"
+		},
+		{
+			"id": "cb1e2ff7-5215-40c4-9e05-8f281b0e7405",
+			"key": "pxi26_telephoneNumeroIntrouvable",
+			"value": "805525525"
+		},
+		{
+			"id": "750b791a-c4f3-40aa-8c2b-3ca94aeaa3a4",
+			"key": "pxi26_telephoneNumero",
+			"value": "0681341104"
+		}
+	]
+}
