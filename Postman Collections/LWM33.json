@@ -1,0 +1,1729 @@
+{
+	"info": {
+		"_postman_id": "48757cec-b4bb-4d43-8498-765102f848f9",
+		"name": "TestSuite_LWM33_LexiqueConsultation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0101_getStatut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response matches ['nom']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData['nom']).to.eql(\"LexiqueConsultationWS\")",
+							"});",
+							"",
+							"pm.test(\"Response contains 'version'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('version');",
+							"});",
+							"",
+							"pm.test(\"Response matches ['codeSAP']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData['codeSAP']).to.eql(\"LWM33\")",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"id": "eeb9651d-32ee-420b-9031-d1adfad03f01"
+					}
+				}
+			],
+			"id": "d5e0b83f-aaf4-4514-9552-45e5d3864bcf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0101_getStatut"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/getStatut?applicationsource={{lwm33_applicationSource}}&numpostetrav={{lwm33_numPosteTrav}}&codeacces={{lwm33_codeAcces}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"getStatut"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0201_lireLexique_categorieCode_COD_NATURE_EPR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response matches ['categorieCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0201_categorieCode = pm.collectionVariables.get(\"0201_categorieCode\");",
+							"    pm.expect(`${jsonData['categorieCode']}`).to.eql(_0201_categorieCode)",
+							"});",
+							"",
+							"pm.test(\"Response matches ['valeurCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0201_valeurCode_Retour = pm.collectionVariables.get(\"0201_valeurCode_Retour\");",
+							"    pm.expect(`${jsonData['valeurCode']}`).to.eql(_0201_valeurCode_Retour)",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "7016df62-43f1-43b2-86cb-337196157464"
+					}
+				}
+			],
+			"id": "a390a5be-648c-448d-8bd8-70c0f3db03e2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0201_lireLexique_categorieCode_COD_NATURE_EPR"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/lireLexique?applicationsource={{lwm33_applicationSource}}&valeurCode={{0201_valeurCode}}&numpostetrav={{lwm33_numPosteTrav}}&codeacces={{lwm33_codeAcces}}&categorieCode={{0201_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"lireLexique"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "valeurCode",
+							"value": "{{0201_valeurCode}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0201_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0202_lireLexique_categorieCode_COD_COLLEG_CCE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response matches ['categorieCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0202_categorieCode = pm.collectionVariables.get(\"0202_categorieCode\");",
+							"    pm.expect(`${jsonData['categorieCode']}`).to.eql(_0202_categorieCode)",
+							"});",
+							"",
+							"pm.test(\"Response matches ['valeurCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0202_valeurCode_Retour = pm.collectionVariables.get(\"0202_valeurCode_Retour\");",
+							"    pm.expect(`${jsonData['valeurCode']}`).to.eql(_0202_valeurCode_Retour)",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "8d929256-b804-4255-a6e0-ea6bf9fae013"
+					}
+				}
+			],
+			"id": "59fbc86e-e390-4075-9c1c-a86bcd6473ef",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0202_lireLexique_categorieCode_COD_COLLEG_CCE"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/lireLexique?applicationsource={{lwm33_applicationSource}}&valeurCode={{0202_valeurCode}}&numpostetrav={{lwm33_numPosteTrav}}&codeacces={{lwm33_codeAcces}}&categorieCode={{0202_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"lireLexique"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "valeurCode",
+							"value": "{{0202_valeurCode}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0202_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0203_lireLexique_categorieCode_PAYS_COD_REF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response matches ['categorieCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0203_categorieCode = pm.collectionVariables.get(\"0203_categorieCode\");",
+							"    pm.expect(`${jsonData['categorieCode']}`).to.eql(_0203_categorieCode)",
+							"});",
+							"",
+							"pm.test(\"Response matches ['valeurCode']\", function () {",
+							"    var jsonData = pm.response.json();",
+							"_0203_valeurCode_Retour = pm.collectionVariables.get(\"0203_valeurCode_Retour\");",
+							"    pm.expect(`${jsonData['valeurCode']}`).to.eql(_0203_valeurCode_Retour)",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "5f9f6d46-ed6d-4690-b087-e81deaafca9d"
+					}
+				}
+			],
+			"id": "186ebfa3-be76-4957-b5ba-a6ec37f43a77",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0203_lireLexique_categorieCode_PAYS_COD_REF"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/lireLexique?applicationsource={{lwm33_applicationSource}}&valeurCode={{0203_valeurCode}}&numpostetrav={{lwm33_numPosteTrav}}&codeacces={{lwm33_codeAcces}}&categorieCode={{0203_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"lireLexique"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "valeurCode",
+							"value": "{{0203_valeurCode}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0203_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0301_listerCSP_categorieCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "65cb4fb4-699b-4c14-b74c-615c0be56b40"
+					}
+				}
+			],
+			"id": "5b5295f7-f7b0-4ea8-8c20-84e328eef83a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0301_listerCSP_categorieCode"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerCSP?contexteexecution.version={{lwm33_version}}&contexteexecution.numpostetrav={{lwm33_numPosteTrav}}&contexteexecution.donneesniveau={{lwm33_donnéeesNiveau}}&contexteexecution.codeacces={{lwm33_codeAcces}}&categoriecode={{0301_categorieCode}}&contexteexecution.codeutilisateur={{lwm33_codeUtilisateur}}&contexteexecution.applicationsource={{lwm33_applicationSource}}&contexteexecution.transactionid={{lwm33_transactionId}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerCSP"
+					],
+					"query": [
+						{
+							"key": "contexteexecution.bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "contexteexecution.nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "contexteexecution.donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "contexteexecution.codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "contexteexecution.classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "categoriecode",
+							"value": "{{0301_categorieCode}}"
+						},
+						{
+							"key": "valeurcode",
+							"value": "{{0301_valeurCode}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "contexteexecution.criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "contexteexecution.transactionid",
+							"value": "{{lwm33_transactionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0302_listerCSP_categorieCodeEtValeurCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "37149620-4db8-442a-b1c1-4d5978cd8c6c"
+					}
+				}
+			],
+			"id": "010caa17-7665-460e-a565-4afbef34221b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0302_listerCSP_categorieCodeEtValeurCode"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerCSP?contexteexecution.version={{lwm33_version}}&contexteexecution.numpostetrav={{lwm33_numPosteTrav}}&contexteexecution.donneesniveau={{lwm33_donnéeesNiveau}}&contexteexecution.codeacces={{lwm33_codeAcces}}&categoriecode={{0302_categorieCode}}&valeurcode={{0302_valeurCode}}&contexteexecution.codeutilisateur={{lwm33_codeUtilisateur}}&contexteexecution.applicationsource={{lwm33_applicationSource}}&contexteexecution.transactionid={{lwm33_transactionId}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerCSP"
+					],
+					"query": [
+						{
+							"key": "contexteexecution.bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "contexteexecution.nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "contexteexecution.donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "contexteexecution.codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "contexteexecution.classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "categoriecode",
+							"value": "{{0302_categorieCode}}"
+						},
+						{
+							"key": "valeurcode",
+							"value": "{{0302_valeurCode}}"
+						},
+						{
+							"key": "contexteexecution.codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "contexteexecution.criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "contexteexecution.transactionid",
+							"value": "{{lwm33_transactionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0303_listerCSP_valeurCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "ca633554-0fbb-4b11-b2e1-15d1c32b606b"
+					}
+				}
+			],
+			"id": "ee3b05a1-0580-4b19-9d81-b4bc77403294",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0303_listerCSP_valeurCode"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerCSP?contexteexecution.version={{lwm33_version}}&contexteexecution.numpostetrav={{lwm33_numPosteTrav}}&contexteexecution.donneesniveau={{lwm33_donnéeesNiveau}}&contexteexecution.codeacces={{lwm33_codeAcces}}&valeurcode={{0303_valeurCode}}&contexteexecution.codeutilisateur={{lwm33_codeUtilisateur}}&contexteexecution.applicationsource={{lwm33_applicationSource}}&contexteexecution.transactionid={{lwm33_transactionId}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerCSP"
+					],
+					"query": [
+						{
+							"key": "contexteexecution.bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "contexteexecution.nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "contexteexecution.donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "contexteexecution.codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "contexteexecution.classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "categoriecode",
+							"value": "{{0303_categorieCode}}",
+							"disabled": true
+						},
+						{
+							"key": "valeurcode",
+							"value": "{{0303_valeurCode}}"
+						},
+						{
+							"key": "contexteexecution.codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "contexteexecution.criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "contexteexecution.applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "contexteexecution.transactionid",
+							"value": "{{lwm33_transactionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0401_listerLexique_categorieCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "0b18a6ee-4d1f-4ec0-8653-78137ee4a924"
+					}
+				}
+			],
+			"id": "d4986579-da70-4a0c-a75d-30e206f67142",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0401_listerLexique_categorieCode"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerLexique?applicationsource={{lwm33_applicationSource}}&codeacces={{lwm33_codeAcces}}&numpostetrav={{lwm33_numPosteTrav}}&categorieCode={{0401_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerLexique"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0401_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0402_listerLexique_categorieCodeEtValeurCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "c8b04dfc-6b6a-43cb-a965-cc999c64622b"
+					}
+				}
+			],
+			"id": "0b098ff1-3d60-4918-be67-8ebde5870393",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0402_listerLexique_categorieCodeEtValeurCode"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"listeLibelle\": {\n    \"listeLibelle\": [\n      {\n        \"categorieCode\": \"{{0402_categorieCode}}\",\n        \"valeurCode\": \"{{0402_valeurCode}}\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{lwm33_fast_component}}/listerLexique"
+			},
+			"response": []
+		},
+		{
+			"name": "0403_listerLexique_plusieursCategorieCodeEtValeurCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "04c01eba-2c92-4300-8690-64eaf38c18f6"
+					}
+				}
+			],
+			"id": "8171a687-9da8-40de-a6f7-f99eb891aadc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0403_listerLexique_plusieursCategorieCodeEtValeurCode"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"listeLibelle\": {\n    \"listeLibelle\": [\n      {\n        \"categorieCode\": \"{{0403_categorieCode_1}}\",\n        \"valeurCode\": \"{{0403_valeurCode_1}}\"\n      },\n      {\n        \"categorieCode\": \"{{0403_categorieCode_2}}\",\n        \"valeurCode\": \"{{0403_valeurCode_2}}\"\n      },\n      {\n        \"categorieCode\": \"{{0403_categorieCode_3}}\",\n        \"valeurCode\": \"{{0403_valeurCode_3}}\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{fast_url}}/{{lwm33_fast_component}}/listerLexique"
+			},
+			"response": []
+		},
+		{
+			"name": "0501_listerLexiquesPourCategorie_categorieCode_COD_COLLEG_CCE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "cb8971d7-ccd2-4b45-ba2d-7661e25fbe89"
+					}
+				}
+			],
+			"id": "f69275c3-ff67-4ab8-9708-793d96c23064",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0501_listerLexiquesPourCategorie_categorieCode_COD_COLLEG_CCE"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerLexiquesPourCategorie?applicationsource={{lwm33_applicationSource}}&codeacces={{lwm33_codeAcces}}&numpostetrav={{lwm33_numPosteTrav}}&categorieCode={{0501_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerLexiquesPourCategorie"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0501_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0502_listerLexiquesPourCategorie_categorieCode-COD_NATURE_EPR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is [200]\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "d22b9da7-05a0-4e03-94a4-a87de27ab986"
+					}
+				}
+			],
+			"id": "23be29cf-2289-4c9b-806e-19a54e96dc6f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Request-Name",
+						"value": "lwm33_0502_listerLexiquesPourCategorie_categorieCode-COD_NATURE_EPR"
+					}
+				],
+				"url": {
+					"raw": "{{fast_url}}/{{lwm33_fast_component}}/listerLexiquesPourCategorie?applicationsource={{lwm33_applicationSource}}&codeacces={{lwm33_codeAcces}}&numpostetrav={{lwm33_numPosteTrav}}&categorieCode={{0502_categorieCode}}&codeutilisateur={{lwm33_codeUtilisateur}}&version={{lwm33_version}}&transactionid={{lwm33_transactionId}}&donneesniveau={{lwm33_donnéeesNiveau}}",
+					"host": [
+						"{{fast_url}}"
+					],
+					"path": [
+						"{{lwm33_fast_component}}",
+						"listerLexiquesPourCategorie"
+					],
+					"query": [
+						{
+							"key": "applicationsource",
+							"value": "{{lwm33_applicationSource}}"
+						},
+						{
+							"key": "codeacces",
+							"value": "{{lwm33_codeAcces}}"
+						},
+						{
+							"key": "numpostetrav",
+							"value": "{{lwm33_numPosteTrav}}"
+						},
+						{
+							"key": "categorieCode",
+							"value": "{{0502_categorieCode}}"
+						},
+						{
+							"key": "codeutilisateur",
+							"value": "{{lwm33_codeUtilisateur}}"
+						},
+						{
+							"key": "version",
+							"value": "{{lwm33_version}}"
+						},
+						{
+							"key": "transactionid",
+							"value": "{{lwm33_transactionId}}"
+						},
+						{
+							"key": "classeutilisateur",
+							"value": "{{lwm33_classeUtilisateur}}",
+							"disabled": true
+						},
+						{
+							"key": "criteretri",
+							"value": "{{lwm33_critereTri}}",
+							"disabled": true
+						},
+						{
+							"key": "indicedepart",
+							"value": "{{lwm33_indiceDepart}}",
+							"disabled": true
+						},
+						{
+							"key": "donneesniveau",
+							"value": "{{lwm33_donnéeesNiveau}}"
+						},
+						{
+							"key": "bouchonnagetype",
+							"value": "{{lwm33_BouchonnageType}}",
+							"disabled": true
+						},
+						{
+							"key": "nombreelementspage",
+							"value": "{{lwm33_nombreElementsPage}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0601_listerProfessions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a3cbd626-8761-4927-b301-91fa1acb5b7a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required field 'professionListe'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.have.property('professionListe');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"professionListe is not empty\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.professionListe.length).to.be.above(0);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "7da5d6ec-5cb6-4777-ae8f-d9cbb35de2fd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "{{vault:fast_password}}",
+						"username": "{{vault:fast_login}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{fast_url}}/{{lwm33_fast_component}}/listerProfessions"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"username": "{{vault:fast_login}}",
+			"password": "{{vault:fast_password}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "99f4b9c3-6ccc-415d-8502-522a171d72de",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "abfd21c2-27ca-426e-9860-0a592140898b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lwm33_applicationSource",
+			"value": "TNRFAST"
+		},
+		{
+			"key": "lwm33_codeAcces",
+			"value": "TNR"
+		},
+		{
+			"key": "lwm33_codeUtilisateur",
+			"value": "6900008"
+		},
+		{
+			"key": "lwm33_classeUtilisateur",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "lwm33_numPosteTrav",
+			"value": "31"
+		},
+		{
+			"key": "lwm33_transactionId",
+			"value": "A"
+		},
+		{
+			"key": "lwm33_version",
+			"value": "1"
+		},
+		{
+			"key": "lwm33_donnéeesNiveau",
+			"value": "SP"
+		},
+		{
+			"key": "lwm33_critereTri",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "lwm33_BouchonnageType",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "lwm33_fast_component",
+			"value": "LexiqueConsultationWS-1/rest/LexiqueConsultationWS"
+		},
+		{
+			"key": "0201_categorieCode",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0201_valeurCode",
+			"value": "AN"
+		},
+		{
+			"key": "0201_categorieCode_Retour",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0201_valeurCode_Retour",
+			"value": "AN"
+		},
+		{
+			"key": "0202_categorieCode",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0202_valeurCode",
+			"value": "153"
+		},
+		{
+			"key": "0202_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0202_valeurCode_Retour",
+			"value": "153"
+		},
+		{
+			"key": "0203_categorieCode",
+			"value": "PAYS-COD-REF"
+		},
+		{
+			"key": "0203_valeurCode",
+			"value": "FR"
+		},
+		{
+			"key": "0203_categorieCode_Retour",
+			"value": "PAYS-COD-REF"
+		},
+		{
+			"key": "0203_valeurCode_Retour",
+			"value": "FR"
+		},
+		{
+			"key": "0301_categorieCode",
+			"value": "1"
+		},
+		{
+			"key": "0301_valeurCode",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "0301_Lexique_1_critereTriPrincipal_Retour",
+			"value": "1"
+		},
+		{
+			"key": "0301_Lexique_1_valeurCode_Retour",
+			"value": "11"
+		},
+		{
+			"key": "0301_Lexique_1_libelleLong_Retour",
+			"value": "Agriculteurs sur petite exploitation"
+		},
+		{
+			"key": "0301_Lexique_2_critereTriPrincipal_Retour",
+			"value": "1"
+		},
+		{
+			"key": "0301_Lexique_2_valeurCode_Retour",
+			"value": "12"
+		},
+		{
+			"key": "0301_Lexique_2_libelleLong_Retour",
+			"value": "Agriculteurs sur moyenne exploitation"
+		},
+		{
+			"key": "0302_categorieCode",
+			"value": "2"
+		},
+		{
+			"key": "0302_valeurCode",
+			"value": "121F"
+		},
+		{
+			"key": "0302_Lexique_critereTriPrincipal_Retour",
+			"value": "2"
+		},
+		{
+			"key": "0302_Lexique_valeurCode_Retour",
+			"value": "121F"
+		},
+		{
+			"key": "0302_Lexique_libelleLong_Retour",
+			"value": "Agriculteurs sur moyenne exploitation sans orientation dominante"
+		},
+		{
+			"key": "0303_categorieCode",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "0303_valeurCode",
+			"value": "12"
+		},
+		{
+			"key": "0303_Lexique_1_critereTriPrincipal_Retour",
+			"value": "1"
+		},
+		{
+			"key": "0303_Lexique_1_valeurCode_Retour",
+			"value": "12"
+		},
+		{
+			"key": "0303_Lexique_1_libelleLong_Retour",
+			"value": "Agriculteurs sur moyenne exploitation"
+		},
+		{
+			"key": "0303_Lexique_2_critereTriPrincipal_Retour",
+			"value": "2"
+		},
+		{
+			"key": "0303_Lexique_2_valeurCode_Retour",
+			"value": "121A"
+		},
+		{
+			"key": "0303_Lexique_2_libelleLong_Retour",
+			"value": "Agriculteurs sur moyenne exploitation de céréales-grandes cultures"
+		},
+		{
+			"key": "0401_categorieCode",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0401_valeurCode",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "0401_Lexique_1_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0401_Lexique_1_valeurCode_Retour",
+			"value": "107"
+		},
+		{
+			"key": "0401_Lexique_1_libelleLong_Retour",
+			"value": "ENSEMBLE DU PERSONNEL"
+		},
+		{
+			"key": "0401_Lexique_2_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0401_Lexique_2_valeurCode_Retour",
+			"value": "050"
+		},
+		{
+			"key": "0401_Lexique_2_libelleLong_Retour",
+			"value": "PERSONNELS ART4 CCN AGIRC"
+		},
+		{
+			"key": "0402_categorieCode",
+			"value": "PAYS-COD-REF"
+		},
+		{
+			"key": "0402_valeurCode",
+			"value": "FR"
+		},
+		{
+			"key": "0402_Lexique_categorieCode_Retour",
+			"value": "PAYS-COD-REF"
+		},
+		{
+			"key": "0402_Lexique_valeurCode_Retour",
+			"value": "FR"
+		},
+		{
+			"key": "0402_Lexique_libelleLong_Retour",
+			"value": "FRANCE"
+		},
+		{
+			"key": "0403_categorieCode_1",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0403_valeurCode_1",
+			"value": "002"
+		},
+		{
+			"key": "0403_categorieCode_2",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0403_valeurCode_2",
+			"value": "003"
+		},
+		{
+			"key": "0403_categorieCode_3",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0403_valeurCode_3",
+			"value": "AN"
+		},
+		{
+			"key": "0403_Lexique_1_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0403_Lexique_1_valeurCode_Retour",
+			"value": "002"
+		},
+		{
+			"key": "0403_Lexique_1_libelleLong_Retour",
+			"value": "CADRES ART 4"
+		},
+		{
+			"key": "0403_Lexique_2_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0403_Lexique_2_valeurCode_Retour",
+			"value": "003"
+		},
+		{
+			"key": "0403_Lexique_2_libelleLong_Retour",
+			"value": "CADRES ART 4 ET 4 BIS"
+		},
+		{
+			"key": "0403_Lexique_3_categorieCode_Retour",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0403_Lexique_3_valeurCode_Retour",
+			"value": "AN"
+		},
+		{
+			"key": "0403_Lexique_3_libelleLong_Retour",
+			"value": "Affaire nouvelle"
+		},
+		{
+			"key": "0501_categorieCode",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0501_Lexique_1_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0501_Lexique_1_valeurCode_Retour",
+			"value": "107"
+		},
+		{
+			"key": "0501_Lexique_1_libelleLong_Retour",
+			"value": "ENSEMBLE DU PERSONNEL"
+		},
+		{
+			"key": "0501_Lexique_2_categorieCode_Retour",
+			"value": "COD-COLLEG-CCE"
+		},
+		{
+			"key": "0501_Lexique_2_valeurCode_Retour",
+			"value": "050"
+		},
+		{
+			"key": "0501_Lexique_2_libelleLong_Retour",
+			"value": "PERSONNELS ART4 CCN AGIRC"
+		},
+		{
+			"key": "0502_categorieCode",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0502_Lexique_1_categorieCode_Retour",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0502_Lexique_1_valeurCode_Retour",
+			"value": "AN"
+		},
+		{
+			"key": "0502_Lexique_1_libelleLong_Retour",
+			"value": "Affaire nouvelle"
+		},
+		{
+			"key": "0502_Lexique_2_categorieCode_Retour",
+			"value": "COD-NATURE-EPR"
+		},
+		{
+			"key": "0502_Lexique_2_valeurCode_Retour",
+			"value": "CA"
+		},
+		{
+			"key": "0502_Lexique_2_libelleLong_Retour",
+			"value": "Régul Comptant Annuelle"
+		}
+	]
+}
