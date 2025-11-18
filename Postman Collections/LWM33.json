@@ -1343,6 +1343,18 @@
 				"url": "{{fast_url}}/{{lwm33_fast_component}}/listerProfessions"
 			},
 			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "452bd533-13ff-4fb1-8d02-7afbb0ebcd6c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -1376,352 +1388,438 @@
 	],
 	"variable": [
 		{
+			"id": "94f6863c-eef4-4682-b641-06ed473cd398",
 			"key": "lwm33_applicationSource",
 			"value": "TNRFAST"
 		},
 		{
+			"id": "05c90253-6ed0-4517-a437-40c9d62912f5",
 			"key": "lwm33_codeAcces",
 			"value": "TNR"
 		},
 		{
+			"id": "69036b29-0769-4e01-9173-127738c834aa",
 			"key": "lwm33_codeUtilisateur",
 			"value": "6900008"
 		},
 		{
+			"id": "90e6d00a-1b70-4636-8cf1-efe8b040073e",
 			"key": "lwm33_classeUtilisateur",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "6bdb9cce-32ce-4816-a275-5f55bb1b1f6c",
 			"key": "lwm33_numPosteTrav",
 			"value": "31"
 		},
 		{
+			"id": "104827e0-10fe-4726-869c-004ddf8e21e0",
 			"key": "lwm33_transactionId",
 			"value": "A"
 		},
 		{
+			"id": "bbab242d-4f6a-4cbb-ae81-b92a272158e9",
 			"key": "lwm33_version",
 			"value": "1"
 		},
 		{
+			"id": "e726a774-8cfe-4f8a-b6cb-278727733022",
 			"key": "lwm33_donnéeesNiveau",
 			"value": "SP"
 		},
 		{
+			"id": "acf19c5c-d2f7-45ab-8613-e6a107e8fcd6",
 			"key": "lwm33_critereTri",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "d93e4233-e62d-4a43-a88e-038f933b1e39",
 			"key": "lwm33_BouchonnageType",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "eb32e493-77ca-4217-bc96-be71f9bd4f3f",
 			"key": "lwm33_fast_component",
 			"value": "LexiqueConsultationWS-1/rest/LexiqueConsultationWS"
 		},
 		{
+			"id": "978cf241-123e-40ac-a654-3a89b1ad1ee0",
 			"key": "0201_categorieCode",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "71ecb3fe-b6f6-4c74-af49-864d1c9579b7",
 			"key": "0201_valeurCode",
 			"value": "AN"
 		},
 		{
+			"id": "5fc4565f-6e4e-47f0-95b4-1dcd158ea447",
 			"key": "0201_categorieCode_Retour",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "7e3aafce-03b8-4870-aa33-36416f94e6f0",
 			"key": "0201_valeurCode_Retour",
 			"value": "AN"
 		},
 		{
+			"id": "fefc91a5-578c-4f61-9993-70797895c91a",
 			"key": "0202_categorieCode",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "e7e97192-fca8-48cf-aec9-3da14d5e651c",
 			"key": "0202_valeurCode",
 			"value": "153"
 		},
 		{
+			"id": "9138dc1d-164d-46b9-ba07-ac2e71d475ba",
 			"key": "0202_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "6dfb4e96-d375-4d3c-b353-4b6485a986e7",
 			"key": "0202_valeurCode_Retour",
 			"value": "153"
 		},
 		{
+			"id": "d7a8838d-2243-428b-bdb9-fbcfb5fa7822",
 			"key": "0203_categorieCode",
 			"value": "PAYS-COD-REF"
 		},
 		{
+			"id": "1bb367f6-5abc-400c-8592-864de55f5a46",
 			"key": "0203_valeurCode",
 			"value": "FR"
 		},
 		{
+			"id": "c7b9d50f-ba94-4f2a-a2f5-134e58ab9dc7",
 			"key": "0203_categorieCode_Retour",
 			"value": "PAYS-COD-REF"
 		},
 		{
+			"id": "0346f706-9f3b-487d-bf81-3973df8b897f",
 			"key": "0203_valeurCode_Retour",
 			"value": "FR"
 		},
 		{
+			"id": "c181259b-4661-410b-b218-2f7fcee2cb9e",
 			"key": "0301_categorieCode",
 			"value": "1"
 		},
 		{
+			"id": "f67ed09b-9d20-4c0f-a42d-d76f7e9fc940",
 			"key": "0301_valeurCode",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "1db03573-7bcc-479c-9fb1-d583143e03d6",
 			"key": "0301_Lexique_1_critereTriPrincipal_Retour",
 			"value": "1"
 		},
 		{
+			"id": "17bccad6-be58-4c3d-8e67-51b2541ec344",
 			"key": "0301_Lexique_1_valeurCode_Retour",
 			"value": "11"
 		},
 		{
+			"id": "80f7f483-42a0-47de-a812-87529e36f6fe",
 			"key": "0301_Lexique_1_libelleLong_Retour",
 			"value": "Agriculteurs sur petite exploitation"
 		},
 		{
+			"id": "faade190-6a6b-4bd7-b094-8f01ddfe7a22",
 			"key": "0301_Lexique_2_critereTriPrincipal_Retour",
 			"value": "1"
 		},
 		{
+			"id": "52181033-9615-49c4-80f1-c93acec9d8a8",
 			"key": "0301_Lexique_2_valeurCode_Retour",
 			"value": "12"
 		},
 		{
+			"id": "b900b66a-c77b-4b48-a247-ed808d0f2796",
 			"key": "0301_Lexique_2_libelleLong_Retour",
 			"value": "Agriculteurs sur moyenne exploitation"
 		},
 		{
+			"id": "3aae108c-4a3e-43e8-af91-816e0eddeb1c",
 			"key": "0302_categorieCode",
 			"value": "2"
 		},
 		{
+			"id": "02223639-4e06-47b4-8567-b3a540331e0d",
 			"key": "0302_valeurCode",
 			"value": "121F"
 		},
 		{
+			"id": "a7b17c23-823f-4afe-8e00-9161956c64a3",
 			"key": "0302_Lexique_critereTriPrincipal_Retour",
 			"value": "2"
 		},
 		{
+			"id": "5d43ce8e-9c4c-4616-8d76-f4e709fa7a14",
 			"key": "0302_Lexique_valeurCode_Retour",
 			"value": "121F"
 		},
 		{
+			"id": "828e9bd3-5f53-4e78-abde-3120e66cee96",
 			"key": "0302_Lexique_libelleLong_Retour",
 			"value": "Agriculteurs sur moyenne exploitation sans orientation dominante"
 		},
 		{
+			"id": "4ae65396-dda9-4dca-81bd-3a154a2773e3",
 			"key": "0303_categorieCode",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "84be98de-5423-43c3-af68-4743e4f9a709",
 			"key": "0303_valeurCode",
 			"value": "12"
 		},
 		{
+			"id": "c158e395-e872-49e3-9051-591057dabdf8",
 			"key": "0303_Lexique_1_critereTriPrincipal_Retour",
 			"value": "1"
 		},
 		{
+			"id": "204826ea-a1c1-4c6d-8794-02ae4678ddd0",
 			"key": "0303_Lexique_1_valeurCode_Retour",
 			"value": "12"
 		},
 		{
+			"id": "8a3adc46-a742-4253-acd0-2b0881fc440d",
 			"key": "0303_Lexique_1_libelleLong_Retour",
 			"value": "Agriculteurs sur moyenne exploitation"
 		},
 		{
+			"id": "805b1fbc-c028-4b51-9915-e030e3c22340",
 			"key": "0303_Lexique_2_critereTriPrincipal_Retour",
 			"value": "2"
 		},
 		{
+			"id": "5c0a6b71-5e4e-4fdc-b986-d2c21a9abe5a",
 			"key": "0303_Lexique_2_valeurCode_Retour",
 			"value": "121A"
 		},
 		{
+			"id": "47110624-a514-4e6d-8afc-1fc32b1f0bee",
 			"key": "0303_Lexique_2_libelleLong_Retour",
 			"value": "Agriculteurs sur moyenne exploitation de céréales-grandes cultures"
 		},
 		{
+			"id": "69901361-56a0-4fd9-bad7-2e5fa61cc2fb",
 			"key": "0401_categorieCode",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "ca1b0694-2108-4d2d-8c95-4dd18c304511",
 			"key": "0401_valeurCode",
 			"value": "",
 			"disabled": true
 		},
 		{
+			"id": "d7d49792-3e0a-4665-bba7-3eda84b664c9",
 			"key": "0401_Lexique_1_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "8762f633-3b5f-4af0-abea-fd8be9cdd188",
 			"key": "0401_Lexique_1_valeurCode_Retour",
 			"value": "107"
 		},
 		{
+			"id": "d087742e-cc03-4b4f-8c05-69752051062c",
 			"key": "0401_Lexique_1_libelleLong_Retour",
 			"value": "ENSEMBLE DU PERSONNEL"
 		},
 		{
+			"id": "eea7de9a-97d0-49b1-8cf1-310604e352bf",
 			"key": "0401_Lexique_2_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "040bf2db-601a-4768-bd7d-7b9fc94894c8",
 			"key": "0401_Lexique_2_valeurCode_Retour",
 			"value": "050"
 		},
 		{
+			"id": "5341a7c5-87a9-42e9-aaa1-43cbca520ff5",
 			"key": "0401_Lexique_2_libelleLong_Retour",
 			"value": "PERSONNELS ART4 CCN AGIRC"
 		},
 		{
+			"id": "a84ad63e-3d3b-4c82-9aa2-8fa4d371a626",
 			"key": "0402_categorieCode",
 			"value": "PAYS-COD-REF"
 		},
 		{
+			"id": "1118dcce-1d5e-4701-9c09-4dd7f44d4086",
 			"key": "0402_valeurCode",
 			"value": "FR"
 		},
 		{
+			"id": "54c56804-90d1-485e-bcde-21196cc16d6e",
 			"key": "0402_Lexique_categorieCode_Retour",
 			"value": "PAYS-COD-REF"
 		},
 		{
+			"id": "e089e009-4f96-426e-8164-4dee097816e8",
 			"key": "0402_Lexique_valeurCode_Retour",
 			"value": "FR"
 		},
 		{
+			"id": "972afbee-5ef0-4f61-abeb-1797104e4d9c",
 			"key": "0402_Lexique_libelleLong_Retour",
 			"value": "FRANCE"
 		},
 		{
+			"id": "8f4b64f3-09ed-421d-bfe4-01404c98d871",
 			"key": "0403_categorieCode_1",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "bbfa7312-ab91-45a8-9831-9d23d8f8aea6",
 			"key": "0403_valeurCode_1",
 			"value": "002"
 		},
 		{
+			"id": "9cdc1a0b-5058-45b0-adfa-f01fd4180141",
 			"key": "0403_categorieCode_2",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "66d73c3a-26ea-4857-a5c5-00cdf1cc4e9d",
 			"key": "0403_valeurCode_2",
 			"value": "003"
 		},
 		{
+			"id": "cc221862-8754-4fc6-aee6-b5f54ff33d1a",
 			"key": "0403_categorieCode_3",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "0149d1be-ec8e-4620-b8af-13375ee3873c",
 			"key": "0403_valeurCode_3",
 			"value": "AN"
 		},
 		{
+			"id": "af667b06-cc0f-425d-8db8-8e2bc6b9fb36",
 			"key": "0403_Lexique_1_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "c299cc8d-e446-47de-841b-f6c2409ce286",
 			"key": "0403_Lexique_1_valeurCode_Retour",
 			"value": "002"
 		},
 		{
+			"id": "d991719e-75d5-4419-a03d-25684bab07e6",
 			"key": "0403_Lexique_1_libelleLong_Retour",
 			"value": "CADRES ART 4"
 		},
 		{
+			"id": "1ebd2b23-2843-430e-b0c6-b5acd92f8c4e",
 			"key": "0403_Lexique_2_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "6f7ea874-82a2-4b61-8fc3-4564374eeaec",
 			"key": "0403_Lexique_2_valeurCode_Retour",
 			"value": "003"
 		},
 		{
+			"id": "06f57f43-ebfa-4048-bcf0-79a301bf8010",
 			"key": "0403_Lexique_2_libelleLong_Retour",
 			"value": "CADRES ART 4 ET 4 BIS"
 		},
 		{
+			"id": "0b1c4fb4-b8e5-490f-97e5-01706101a123",
 			"key": "0403_Lexique_3_categorieCode_Retour",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "317a4cb0-3c98-4789-8781-b434adaa4d1a",
 			"key": "0403_Lexique_3_valeurCode_Retour",
 			"value": "AN"
 		},
 		{
+			"id": "efcdceb9-4f9c-4f76-a0c2-47f435dc9855",
 			"key": "0403_Lexique_3_libelleLong_Retour",
 			"value": "Affaire nouvelle"
 		},
 		{
+			"id": "24d02485-c9d0-469a-8fe1-b5eba5e158dd",
 			"key": "0501_categorieCode",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "c0ade8c0-9870-493f-9c29-831e180a4e2f",
 			"key": "0501_Lexique_1_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "5012ad1c-0181-499f-a0f2-91c4c6bf8c6c",
 			"key": "0501_Lexique_1_valeurCode_Retour",
 			"value": "107"
 		},
 		{
+			"id": "dd4912a2-2dda-44c3-9281-c915dc6dd923",
 			"key": "0501_Lexique_1_libelleLong_Retour",
 			"value": "ENSEMBLE DU PERSONNEL"
 		},
 		{
+			"id": "9423680e-f45a-4cb7-818f-75465b9bf51e",
 			"key": "0501_Lexique_2_categorieCode_Retour",
 			"value": "COD-COLLEG-CCE"
 		},
 		{
+			"id": "6ec89158-e9b1-4d39-b2ac-5047cf752e1c",
 			"key": "0501_Lexique_2_valeurCode_Retour",
 			"value": "050"
 		},
 		{
+			"id": "6359cbd2-b861-4935-9ae9-11a170f833be",
 			"key": "0501_Lexique_2_libelleLong_Retour",
 			"value": "PERSONNELS ART4 CCN AGIRC"
 		},
 		{
+			"id": "927b2c97-7823-48b5-8bac-180af572c6bb",
 			"key": "0502_categorieCode",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "479b81f1-2bc7-4ef1-ba3a-5f9ed8fb6ba2",
 			"key": "0502_Lexique_1_categorieCode_Retour",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "67f51b18-652f-4afc-a48d-b60c926b75f1",
 			"key": "0502_Lexique_1_valeurCode_Retour",
 			"value": "AN"
 		},
 		{
+			"id": "b49f4e58-c3b9-4fb1-80d6-72066a1ba2c5",
 			"key": "0502_Lexique_1_libelleLong_Retour",
 			"value": "Affaire nouvelle"
 		},
 		{
+			"id": "0f1005c1-7c5a-452b-8224-86954590062d",
 			"key": "0502_Lexique_2_categorieCode_Retour",
 			"value": "COD-NATURE-EPR"
 		},
 		{
+			"id": "03428817-fe1e-4f2d-9e76-7889d338a478",
 			"key": "0502_Lexique_2_valeurCode_Retour",
 			"value": "CA"
 		},
 		{
+			"id": "68244748-fa7c-49f5-86c8-8bf509f092ae",
 			"key": "0502_Lexique_2_libelleLong_Retour",
 			"value": "Régul Comptant Annuelle"
 		}
